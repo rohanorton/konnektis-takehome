@@ -9,3 +9,5 @@ $ docker-compose up
 
 This will create an instance of postgresql, creating required tables as well as
 starting the app up.
+
+The app is served on http://localhost:3001
