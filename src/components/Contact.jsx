@@ -6,6 +6,7 @@ const Contact = ({contact}) => (
     <h3>{contact.name}</h3>
     <p>Email: {contact.email}</p>
     <p>Telephone: {contact.phone}</p>
+    <button onClick={e => contact.remove()} >Remove</button>
   </div>
 );
 

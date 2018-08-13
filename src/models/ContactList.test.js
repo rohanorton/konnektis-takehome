@@ -7,8 +7,19 @@ describe('ContactList Model', () => {
     contactList = ContactList.create({});
   });
 
-  it('can add contact', () => {
-    contactList.add({
+  afterEach(() => {
+    fetch.resetMocks()
+  })
+
+  it('can add contact', async () => {
+    fetch.mockResponseOnce(JSON.stringify({
+      id: '1234',
+      name: 'Joe Blogs',
+      email: 'joe@example.com',
+      phone: '1234-5678',
+    }))
+
+    await contactList.add({
       name: 'Joe Blogs',
       email: 'joe@example.com',
       phone: '1234-5678',
@@ -17,8 +28,15 @@ describe('ContactList Model', () => {
     expect(contactList.list.length).toBe(1);
   });
 
-  it('does not add contact if has empty fields', () => {
-    contactList.add({
+  it('does not attempt add contact if has empty fields', async () => {
+    fetch.mockResponseOnce(JSON.stringify({
+      id: '1234',
+      name: 'Joe Blogs',
+      email: '',
+      phone: '',
+    }))
+
+    await contactList.add({
       name: 'Joe Blogs',
       email: '',
       phone: '',
@@ -26,13 +44,21 @@ describe('ContactList Model', () => {
 
     expect(contactList.list.length).toBe(0);
   });
-  it('creates an ID for added contact', () => {
-    contactList.add({
+
+  it('creates an ID for added contact', async () => {
+    fetch.mockResponseOnce(JSON.stringify({
+      id: '1234',
+      name: 'Joe Blogs',
+      email: 'joe@example.com',
+      phone: '1234-5678',
+    }))
+
+    await contactList.add({
       name: 'Joe Blogs',
       email: 'joe@example.com',
       phone: '1234-5678',
     });
 
-    expect(contactList.list[0].id).toBeTruthy();
+    expect(contactList.list[0].id).toBe('1234');
   });
 });

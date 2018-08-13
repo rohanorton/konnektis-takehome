@@ -2,10 +2,16 @@
   "name": "konnektis-takehome",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.5",
     "mobx-state-tree": "^3.1.1",
+    "pg": "^7.4.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
@@ -14,6 +20,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:backend": "jest --watch --testPathPattern ./backend\/.*",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jest-fetch-mock": "^1.6.5"
   }
 }

@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import ContactList from './models/ContactList';
 
 const store = ContactList.create({});
+store.fetch();
 
 ReactDOM.render(<App store={store} />, document.getElementById('root'));
+
 registerServiceWorker();
