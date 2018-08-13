@@ -1,7 +1,9 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-const logger = require('koa-logger')
+const static = require('koa-static');
+const logger = require('koa-logger');
+const path = require('path');
 
 const contactsController = require('./controllers/contacts');
 
@@ -17,8 +19,9 @@ api.delete('/contacts/:id', ctx => contactsController.delete(ctx));
 const app = new Koa();
 
 // Register Middleware
-app.use(logger())
+app.use(logger());
 app.use(bodyParser());
 app.use(api.routes());
+app.use(static(path.resolve(__dirname, '../build')));
 
 app.listen(3001);
