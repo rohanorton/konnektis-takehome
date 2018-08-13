@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "backend": "node backend",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:backend": "jest --watch --testPathPattern ./backend/.*",
