@@ -38,7 +38,14 @@ database running.
 
 The application uses all defaults (i.e. database, host, user). If you want to
 change these properties you can set `PG` environment variables
-(https://www.postgresql.org/docs/9.1/static/libpq-envars.html)
+(https://www.postgresql.org/docs/9.1/static/libpq-envars.html).
+For example:
+```sh
+export PGPASSWORD=pass_the_pasta
+export PGUSER=root
+export PGDATABASE=konnektis
+export PGHOST=localhost
+```
 
 Run the migration file in `/sql` directory to create the table required by the
 application:
